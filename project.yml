@@ -1,0 +1,49 @@
+name: TimeTracker
+options:
+  bundleIdPrefix: com.juididolkar
+  deploymentTarget:
+    macOS: "14.0"
+  xcodeVersion: "16.0"
+  createIntermediateGroups: true
+
+packages:
+  KeyboardShortcuts:
+    url: https://github.com/sindresorhus/KeyboardShortcuts
+    from: 2.2.0
+
+targets:
+  TimeTracker:
+    type: application
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: TimeTracker
+    resources:
+      - path: TimeTracker/Resources/Assets.xcassets
+    entitlements:
+      path: TimeTracker/TimeTracker.entitlements
+    info:
+      path: TimeTracker/Info.plist
+      properties:
+        CFBundleName: TimeTracker
+        CFBundleDisplayName: TimeTracker
+        CFBundleIdentifier: com.juididolkar.TimeTracker
+        CFBundleVersion: "1"
+        CFBundleShortVersionString: "1.0"
+        LSUIElement: true
+        NSMicrophoneUsageDescription: "TimeTracker needs microphone access for voice commands."
+        NSSpeechRecognitionUsageDescription: "TimeTracker uses speech recognition to parse voice commands."
+        LSApplicationCategoryType: public.app-category.productivity
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.juididolkar.TimeTracker
+        SWIFT_VERSION: "6.0"
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
+        ENABLE_HARDENED_RUNTIME: YES
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: ""
+        SWIFT_STRICT_CONCURRENCY: complete
+    dependencies:
+      - package: KeyboardShortcuts
+    scheme:
+      testTargets: []
